@@ -66,4 +66,13 @@ function quiz(question, answer) {
   
   var username = readlineSync.question("Please, Enter the username you want to play this game with! ")
   console.log("Hello ", username, " Welcome to the Anime Quiz! Hope you had a fun time getting all the questions right!")
+
+  // For loop, to play the quiz
+
+for (i = 0; i < questionList.length; i++) {
+    quiz(questionList[i].question, questionList[i].answer)
+  }
   
+  // Final message
+  
+  console.log("Hope you had a blast playing this quiz! ", username, ". \nSee ya soon! \nYour Score was ", score)  
