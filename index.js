@@ -47,3 +47,23 @@ var questionList = [
     answer: "a"
   }
 ]
+
+// Creating function
+
+function quiz(question, answer) {
+    var userAnswer = readlineSync.question(question)
+    if (userAnswer.toUpperCase() === answer.toUpperCase()) {
+      console.log("You are right! Keep it up...")
+      score++
+    } else {
+      console.log("You got it wrong!")
+    }
+  
+    console.log("Your current Score is ", score)
+  }
+  
+  // Welcome message
+  
+  var username = readlineSync.question("Please, Enter the username you want to play this game with! ")
+  console.log("Hello ", username, " Welcome to the Anime Quiz! Hope you had a fun time getting all the questions right!")
+  
