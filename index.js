@@ -1,9 +1,16 @@
 // Importing Libraries
 var readlineSync = require("readline-sync");
+const chalk = require(`chalk`);
 
 // Variables to be used
 
 score = 0
+
+var rightAns = chalk.green;
+var wrongAns = chalk.red;
+var userColor = chalk.yellowBright.bold;
+var finalMessage = chalk.yellow.bold;
+var queColor = chalk.blue.italic;
 
 var questionList = [
   {
@@ -51,28 +58,28 @@ var questionList = [
 // Creating function
 
 function quiz(question, answer) {
-    var userAnswer = readlineSync.question(question)
-    if (userAnswer.toUpperCase() === answer.toUpperCase()) {
-      console.log("You are right! Keep it up...")
-      score++
-    } else {
-      console.log("You got it wrong!")
-    }
-  
-    console.log("Your current Score is ", score)
+  var userAnswer = readlineSync.question(queColor(question))
+  if (userAnswer.toUpperCase() === answer.toUpperCase()) {
+    console.log(rightAns("You are right! Keep it up..."))
+    score++
+  } else {
+    console.log(wrongAns("You got it wrong!"))
   }
-  
-  // Welcome message
-  
-  var username = readlineSync.question("Please, Enter the username you want to play this game with! ")
-  console.log("Hello ", username, " Welcome to the Anime Quiz! Hope you had a fun time getting all the questions right!")
 
-  // For loop, to play the quiz
+  console.log("Your current Score is ", score)
+}
+
+// Welcome message
+
+var username = readlineSync.question("Please, Enter the username you want to play this game with! ")
+console.log(userColor("Hello ", username, " Welcome to the Anime Quiz! Hope you had a fun time getting all the questions right!"))
+
+// For loop, to play the quiz
 
 for (i = 0; i < questionList.length; i++) {
-    quiz(questionList[i].question, questionList[i].answer)
-  }
-  
-  // Final message
-  
-  console.log("Hope you had a blast playing this quiz! ", username, ". \nSee ya soon! \nYour Score was ", score)  
+  quiz(questionList[i].question, questionList[i].answer)
+}
+
+// Final message
+
+console.log(finalMessage("Hope you had a blast playing this quiz! ", username, ". \nSee ya soon! \nYour Score was ", score))
